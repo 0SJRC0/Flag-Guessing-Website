@@ -1,0 +1,302 @@
+:root {
+  --body-color: #181818;
+  --div-color: #282828;
+  --button-color: #381820;
+  --border-color: #66707a;
+  --font-color-in-box: #501820;
+}
+
+@keyframes correctblink {
+  0% {
+    background-color: rgb(3, 196, 3);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    background-color: var(--body-color);
+    opacity: 1;
+  }
+}
+@keyframes incorrectblink {
+  0% {
+    background-color: rgb(196, 3, 3);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    background-color: var(--body-color);
+    opacity: 1;
+  }
+}
+.correctblink {
+  animation: correctblink 0.5s forwards;
+}
+
+.incorrectblink {
+  animation: incorrectblink 0.5s forwards;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--body-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.maincontainer {
+  height: 70vh;
+  width: 100%;
+  display: grid;
+  grid-auto-flow: row;
+  row-gap: 1em;
+  position: absolute;
+  place-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.flagcontainer {
+  height: 15em;
+  aspect-ratio: 15/9;
+  width: auto;
+  background-color: var(--div-color);
+  display: grid;
+  place-items: center;
+  border-radius: 1em;
+}
+
+.guesscontainer {
+  width: 60vw;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 1em;
+  background: var(--div-color);
+}
+.guesscontainer #submitbutton {
+  height: 2rem;
+  width: 6rem;
+  font-size: 0.6em;
+  text-align: center;
+  border-radius: 1rem;
+  background: var(--button-color);
+}
+.guesscontainer button {
+  box-sizing: border-box;
+  height: auto;
+  width: 10em;
+  text-align: center;
+  border: 0;
+  border-radius: 1em;
+  background: var(--button-color);
+  color: var(--font-color-in-box);
+  font-weight: 700;
+  border: 0.3em solid var(--border-color);
+  cursor: pointer;
+  transition: transform box-shadow 0.1s ease-in;
+}
+.guesscontainer button:hover {
+  transform: translateY(3px);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5019607843);
+}
+
+.randomizebuttons {
+  font-size: 1em;
+  padding: 5px;
+}
+
+#inputbox {
+  height: 4em;
+  width: 15em;
+  text-align: center;
+  border: none;
+  border-radius: 0.5em;
+  background: var(--body-color);
+  transition: border 0.3s;
+  color: var(--font-color-in-box);
+  font-weight: 700;
+  font-size: auto;
+}
+#inputbox::-moz-placeholder {
+  color: var(--font-color-in-box);
+  font-weight: 700;
+  font-size: 1.5em;
+  text-align: center;
+}
+#inputbox::placeholder {
+  color: var(--font-color-in-box);
+  font-weight: 700;
+  font-size: 1.5em;
+  text-align: center;
+}
+#inputbox:focus {
+  outline-style: none;
+  box-shadow: none;
+  box-sizing: content-box;
+  border: 5px solid var(--border-color);
+  border-radius: 0.5em;
+}
+
+.imageslot {
+  width: auto !important;
+  height: 10rem;
+  border-radius: 1em;
+  border: 8px solid var(--font-color-in-box);
+}
+
+.scorecontainer {
+  font-weight: 700;
+  color: var(--font-color-in-box);
+  font-size: 2em;
+}
+
+.attempts {
+  color: var(--font-color-in-box);
+  font-size: 2em;
+  z-index: 100;
+  font-weight: 600;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+}
+
+.start-menu {
+  background: var(--button-color);
+  border: 5px solid var(--font-color-in-box);
+  border-radius: 10px;
+  font-weight: 700;
+  color: var(--border-color);
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 1s;
+}
+
+.highscore {
+  background: var(--body-color);
+  border: 5px solid var(--div-color);
+  border-radius: 10px;
+  font-weight: 700;
+  color: var(--border-color);
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 1s;
+}
+
+form {
+  position: fixed;
+  top: 0;
+  right: 10px;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.color-picker > fieldset {
+  border: 0;
+  display: flex;
+  gap: 2rem;
+  background: #fff;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1rem 3rem;
+  margin-inline: auto;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.color-picker input[type=radio] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 1rem;
+  height: 1rem;
+  outline: 3px solid var(--radio-color, currentColor);
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+.color-picker input[type=radio]:checked {
+  background-color: var(--radio-color);
+}
+.color-picker input[type=radio]#dark {
+  --radio-color: #270D31;
+}
+.color-picker input[type=radio]#gray {
+  --radio-color: #84ADD1;
+}
+.color-picker input[type=radio]#vibrant {
+  --radio-color: #F04535;
+}
+.color-picker input[type=radio]#relaxing {
+  --radio-color: #8BE28B;
+}
+
+:root:has(#dark:checked) {
+  --body-color: #311939;
+  --div-color: #270D31;
+  --button-color: #311939;
+  --font-color-in-box: #724389;
+  --border-color: #A064B9;
+}
+
+:root:has(#gray:checked) {
+  --body-color: #84ADD1;
+  --div-color: #F0EFF5;
+  --button-color: #D4D4D4;
+  --font-color-in-box: #BBC2CC;
+  --border-color: #EAE9EE;
+}
+
+:root:has(#vibrant:checked) {
+  --body-color: #EEC0BE;
+  --div-color: #F25C54;
+  --button-color: #F79C97;
+  --font-color-in-box: #F04535;
+  --border-color: #F26659;
+}
+
+:root:has(#relaxing:checked) {
+  --body-color: #E3F8F2;
+  --div-color: #EDFBF6;
+  --button-color: #AEEBB5;
+  --font-color-in-box: #629868;
+  --border-color: #8BE28B;
+}/*# sourceMappingURL=scss.css.map */

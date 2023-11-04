@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/flagproject/css/scss.css">
+    <script src="mainjs.js" defer></script>
+    <title>Guess The Flag</title>
+</head>
+<body id="mainbody">
+    <div class="overlay" id="overlay">
+        <div id="startMenu" class="start-menu">Start The Game!</div>
+        <div class="highscore">Highscore: 0</div>
+    </div>
+    <form action="" class="color-picker">
+        <fieldset>
+            <legend class="visually-hidden">Pick A Color Scheme</legend>
+            <label for="gray" class="visually-hidden">Gray Theme</label>
+            <input type="radio" name="theme" id="gray" checked>
+            <label for="dark" class="visually-hidden">Dark Theme</label>
+            <input type="radio" name="theme" id="dark">
+
+            <label for="vibrant" class="visually-hidden">Vibrant Theme</label>
+            <input type="radio" name="theme" id="vibrant">
+
+            <label for="relaxing" class="visually-hidden">Relaxing Theme</label>
+            <input type="radio" name="theme" id="relaxing">
+        </fieldset>
+    </form>
+    <span class="attempts">Attempts: 5</span>
+    <div class="maincontainer">
+        <div class="flagcontainer">
+            <img class="imageslot" src="" alt="">
+        </div>
+
+        <div class="guesscontainer">
+            <input autocomplete="off" id="inputbox" type="text" placeholder="Enter Your Guess:">
+            <button id="submitbutton" onclick="CheckIfCorrect()">Submit Answer</button>
+            <div class="checkercontainer">
+                <i></i>
+                <button class="randomizebuttons" onclick="ChangeFlag()">Randomise Country</button>
+            </div>
+        </div>
+
+
+        <div class="scorecontainer">Score: <span id="scoreholder">0</span></div>
+    </div>
+</body>
+</html>
